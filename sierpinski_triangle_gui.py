@@ -1,7 +1,15 @@
 #!/usr/bin/python
 
-import tkinter as tk
-from tkinter import filedialog as tkFileDialog
+try:
+  import tkinter as tk
+except ImportError:
+  import Tkinter as tk
+
+try:
+  from tkinter import filedialog as tkFileDialog
+except ImportError:
+  from Tkinter import filedialog as tkFileDialog
+
 import threading
 
 from sierpinski_triangle import SierpinskiTriangle, credits, IsIterable
