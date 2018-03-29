@@ -8,7 +8,7 @@ except ImportError:
 try:
   from tkinter import filedialog as tkFileDialog
 except ImportError:
-  from Tkinter import filedialog as tkFileDialog
+  import tkFileDialog
 
 import threading
 
