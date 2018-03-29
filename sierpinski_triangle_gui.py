@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import filedialog as tkFileDialog
 import threading
 
-from sierpinski_triangle import SierpinskiTriangle
+from sierpinski_triangle import SierpinskiTriangle, credits, IsIterable
 
 class GUI(tk.Frame):
 	def __init__(self, master=None):
@@ -129,7 +129,7 @@ class GUI(tk.Frame):
 		"""Taken from http://www.daniweb.com/code/snippet649.html no need to reinvent the wheel with this, it should be built-in. Changed from generator."""
 		output = []
 		for elem in lst:
-			if SierpinskiTriangle.IsIterable(elem): #if type(elem) in (tuple, list):
+			if IsIterable(elem): #if type(elem) in (tuple, list):
 				output.extend((i for i in self.Flatten(elem)))
 			else:
 				output.append(elem)
@@ -150,7 +150,7 @@ class GUI(tk.Frame):
 				'<?xml version="1.0" encoding="UTF-8" standalone="no"?>',
 				'<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">',
 				'<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="%dpx" height="%dpx">' % (self.sideLength, self.sideLength),
-				'\t<!-- %s, Number of Steps: %s -->' % (SierpinskiTriangle.credits, self.st.steps),
+				'\t<!-- %s, Number of Steps: %s -->' % (credits, self.st.steps),
 				'\t<rect width="%s" height="%s" fill="%s"/>' % (self.sideLength, self.sideLength, self.backgroundCol)
 			]
 
@@ -221,7 +221,7 @@ class GUI(tk.Frame):
 		print('Help')
 
 	def About(self, event=None):
-		print('About: %s' % (SierpinskiTriangle.credits))
+		print('About: %s' % (credits))
 
 if __name__ == '__main__':
 	gui = GUI()
