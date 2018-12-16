@@ -2,13 +2,14 @@
 
 import unittest
 
-import sierpinski_triangle_gui as gui
+import sierpinski_triangle_gui as st_gui
 
 
 class TestSierpinskiTriangleGUI(unittest.TestCase):
 
     def test_gui(self):
-        pass
+        gui = st_gui.GUI()
+        gui.Reset()
 
 
 if __name__ == "__main__":
