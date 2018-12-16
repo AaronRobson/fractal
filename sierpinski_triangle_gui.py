@@ -14,6 +14,7 @@ import threading
 
 from sierpinski_triangle import SierpinskiTriangle, credits, IsIterable
 
+
 def Flatten(lst):
     """Taken from http://www.daniweb.com/code/snippet649.html no need to
     reinvent the wheel with this, it should be built-in.
