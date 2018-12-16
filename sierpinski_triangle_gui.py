@@ -14,6 +14,19 @@ import threading
 
 from sierpinski_triangle import SierpinskiTriangle, credits, IsIterable
 
+def Flatten(lst):
+    """Taken from http://www.daniweb.com/code/snippet649.html no need to
+    reinvent the wheel with this, it should be built-in.
+    Changed from generator.
+    """
+    output = []
+    for elem in lst:
+        if IsIterable(elem):
+            output.extend((i for i in Flatten(elem)))
+        else:
+            output.append(elem)
+    return tuple(output)
+
 
 class GUI(tk.Frame):
     def __init__(self, master=None):
@@ -168,19 +181,6 @@ class GUI(tk.Frame):
         self.master.rowconfigure(1, weight=1)
         self.master.columnconfigure(1, weight=1)
 
-    def Flatten(self, lst):
-        """Taken from http://www.daniweb.com/code/snippet649.html no need to
-        reinvent the wheel with this, it should be built-in.
-        Changed from generator.
-        """
-        output = []
-        for elem in lst:
-            if IsIterable(elem):
-                output.extend((i for i in self.Flatten(elem)))
-            else:
-                output.append(elem)
-        return tuple(output)
-
     def Reset(self, event=None):
         self.st.Reset()
         self.Display()
@@ -211,7 +211,7 @@ class GUI(tk.Frame):
 
             bufferData = (
                 '\t<polygon points="%s,%s %s,%s %s,%s"' % (
-                    self.Flatten(tri) + fill)
+                    Flatten(tri) + fill)
                 for tri in self.st.triangles
             )
             buffer.extend(bufferData)
