@@ -6,11 +6,7 @@ Sierpinski Triangle, each level reduces the total area by one quarter.
 Each level has 3/4 of the area of the last.
 '''
 
-creditDict = {
-    'author': 'Aaron Robson',
-    'title': 'Sierpinski Triangle generator'
-}
-credits = '{title} by {author}'.format(**creditDict)
+credits = 'Sierpinski Triangle generator'
 
 
 def IsIterable(object):
