@@ -114,5 +114,3 @@ if __name__ == "__main__":
     print(len(st.triangles))
     for i in st.triangles:
         print(i)
-
-    input('\nPress Enter to Exit:')
