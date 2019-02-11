@@ -12,7 +12,3 @@ class TestSierpinskiTriangle(unittest.TestCase):
         self.assertEqual(obj.steps, 0)
         obj.Step()
         self.assertEqual(obj.steps, 1)
-
-
-if __name__ == "__main__":
-    unittest.main()
