@@ -17,6 +17,10 @@ def IsIterable(object):
     return hasattr(object, '__iter__')
 
 
+def MeanAverage(*values):
+    return float(sum(values)) / len(values)
+
+
 class SierpinskiTriangle():
     def __init__(self, origin=None, sideLength=None, *dimensions):
         """Accepts 3 pairs of dimensions as the vertices of a triangle or 4 as
@@ -61,14 +65,11 @@ class SierpinskiTriangle():
                 origin[1] + (((sideLength**2 - (sideLength/2)**2))**.5))
             )
 
-    def MeanAverage(self, *values):
-        return float(sum(values)) / len(values)
-
     def HalfPoint(self, firstCoordinates, secondCoordinates):
         averages = []
         for i in range(min(len(firstCoordinates), len(secondCoordinates))):
             averages.append(
-                self.MeanAverage(firstCoordinates[i], secondCoordinates[i]))
+                MeanAverage(firstCoordinates[i], secondCoordinates[i]))
         return tuple(averages)
 
     def Step(self):
@@ -106,7 +107,6 @@ if __name__ == "__main__":
     print(credits)
     st = SierpinskiTriangle()
     print(st.MakeEquilateralTriangle())
-    print(st.MeanAverage(10, 20))
     print(st.HalfPoint((0, 0), (1, 1)))
 
     print(str(st))

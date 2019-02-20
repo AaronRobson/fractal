@@ -5,6 +5,12 @@ import unittest
 import sierpinski_triangle as st
 
 
+class TestMeanAverage(unittest.TestCase):
+
+    def test_two_values(self):
+        self.assertAlmostEqual(st.MeanAverage(10, 20), 15)
+
+
 class TestSierpinskiTriangle(unittest.TestCase):
 
     def setUp(self):
