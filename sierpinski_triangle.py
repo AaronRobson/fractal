@@ -29,6 +29,18 @@ def HalfPoint(firstCoordinates, secondCoordinates):
     return tuple(averages)
 
 
+def _format_point(point):
+    return '({})'.format(', '.join('{:.2f}'.format(value) for value in point))
+
+
+def _format_triangle(triangle):
+    return '({})'.format(', '.join(map(_format_point, triangle)))
+
+
+def _format_triangles(triangles):
+    return '\n'.join(map(_format_triangle, triangles))
+
+
 class SierpinskiTriangle():
     def __init__(self, origin=None, sideLength=None, *dimensions):
         """Accepts 3 pairs of dimensions as the vertices of a triangle or 4 as
@@ -101,7 +113,8 @@ class SierpinskiTriangle():
         return .75**self.steps
 
     def __str__(self):
-        return str(len(self.triangles)) + '\n' + '\n'.join(map(str, self.triangles))
+        return str(len(self.triangles)) + '\n' + \
+            _format_triangles(self.triangles)
 
 
 if __name__ == "__main__":

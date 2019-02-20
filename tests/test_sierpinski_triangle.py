@@ -32,4 +32,4 @@ class TestSierpinskiTriangle(unittest.TestCase):
         self.assertEqual(self.obj.steps, 1)
 
     def test_str(self):
-        self.assertEqual(str(self.obj), '1\n((0.0, 0.0), (1.0, 0.0), (0.5, 0.8660254037844386))')
+        self.assertEqual(str(self.obj), '1\n((0.00, 0.00), (1.00, 0.00), (0.50, 0.87))')
