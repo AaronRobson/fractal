@@ -15,7 +15,6 @@ class TestHalfPoint(unittest.TestCase):
 
     def test_two_values(self):
         actual = st.HalfPoint((0, 0), (1, 1))
-        expected = (0.5, 0.5)
         self.assertEqual(len(actual), 2)
         self.assertAlmostEqual(actual[0], 0.5)
         self.assertAlmostEqual(actual[1], 0.5)
@@ -32,4 +31,6 @@ class TestSierpinskiTriangle(unittest.TestCase):
         self.assertEqual(self.obj.steps, 1)
 
     def test_str(self):
-        self.assertEqual(str(self.obj), '1\n((0.00, 0.00), (1.00, 0.00), (0.50, 0.87))')
+        self.assertEqual(
+            str(self.obj),
+            '1\n((0.00, 0.00), (1.00, 0.00), (0.50, 0.87))')
