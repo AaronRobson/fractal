@@ -98,6 +98,9 @@ class SierpinskiTriangle():
     def AreaProportion(self):
         return .75**self.steps
 
+    def __str__(self):
+        return str(len(self.triangles)) + '\n' + '\n'.join(map(str, self.triangles))
+
 
 if __name__ == "__main__":
     print(credits)
@@ -105,8 +108,9 @@ if __name__ == "__main__":
     print(st.MakeEquilateralTriangle())
     print(st.MeanAverage(10, 20))
     print(st.HalfPoint((0, 0), (1, 1)))
-    print(len(st.triangles), st.triangles)
+
+    print(str(st))
+
     st.Step()
-    print(len(st.triangles))
-    for i in st.triangles:
-        print(i)
+
+    print(str(st))
