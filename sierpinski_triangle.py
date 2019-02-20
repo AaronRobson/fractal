@@ -21,6 +21,14 @@ def MeanAverage(*values):
     return float(sum(values)) / len(values)
 
 
+def HalfPoint(firstCoordinates, secondCoordinates):
+    averages = []
+    for i in range(min(len(firstCoordinates), len(secondCoordinates))):
+        averages.append(
+            MeanAverage(firstCoordinates[i], secondCoordinates[i]))
+    return tuple(averages)
+
+
 class SierpinskiTriangle():
     def __init__(self, origin=None, sideLength=None, *dimensions):
         """Accepts 3 pairs of dimensions as the vertices of a triangle or 4 as
@@ -65,22 +73,15 @@ class SierpinskiTriangle():
                 origin[1] + (((sideLength**2 - (sideLength/2)**2))**.5))
             )
 
-    def HalfPoint(self, firstCoordinates, secondCoordinates):
-        averages = []
-        for i in range(min(len(firstCoordinates), len(secondCoordinates))):
-            averages.append(
-                MeanAverage(firstCoordinates[i], secondCoordinates[i]))
-        return tuple(averages)
-
     def Step(self):
         self.steps += 1
         tempTriangles = []
 
         for triangle in self.triangles:
             middlePoints = (
-                self.HalfPoint(triangle[0], triangle[1]),
-                self.HalfPoint(triangle[1], triangle[2]),
-                self.HalfPoint(triangle[2], triangle[0]),
+                HalfPoint(triangle[0], triangle[1]),
+                HalfPoint(triangle[1], triangle[2]),
+                HalfPoint(triangle[2], triangle[0]),
             )
 
             temp = (
@@ -107,7 +108,6 @@ if __name__ == "__main__":
     print(credits)
     st = SierpinskiTriangle()
     print(st.MakeEquilateralTriangle())
-    print(st.HalfPoint((0, 0), (1, 1)))
 
     print(str(st))
 

@@ -11,6 +11,16 @@ class TestMeanAverage(unittest.TestCase):
         self.assertAlmostEqual(st.MeanAverage(10, 20), 15)
 
 
+class TestHalfPoint(unittest.TestCase):
+
+    def test_two_values(self):
+        actual = st.HalfPoint((0, 0), (1, 1))
+        expected = (0.5, 0.5)
+        self.assertEqual(len(actual), 2)
+        self.assertAlmostEqual(actual[0], 0.5)
+        self.assertAlmostEqual(actual[1], 0.5)
+
+
 class TestSierpinskiTriangle(unittest.TestCase):
 
     def setUp(self):
